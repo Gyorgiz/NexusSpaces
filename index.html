@@ -3,49 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Διαθεσιμότητα Χώρων Πάρκου</title>
+    <title>Project Nexus - Διαθεσιμότητα Χώρων</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             text-align: center;
-            margin: 20px;
-            background-color: #f0f8ff;
+            margin: 0;
+            background: linear-gradient(to bottom, #a8d5ba, #d5e8d4);
+            color: #333;
         }
         h1 {
-            color: #2c3e50;
+            font-size: 2.5em;
+            margin-top: 20px;
             margin-bottom: 40px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
         }
         .space {
-            margin: 20px auto;
-            padding: 15px;
-            border: 2px solid #2ecc71;
-            border-radius: 10px;
-            background-color: #ecf9ec;
-            width: 300px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 400px;
+            padding: 20px;
+            border-radius: 15px;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .space:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
         .space h2 {
-            margin: 0 0 10px;
-            color: #34495e;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #2c3e50;
         }
         .availability {
-            font-size: 2em;
+            font-size: 2.5em;
             color: #27ae60;
             font-weight: bold;
         }
         button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 1em;
-            color: white;
+            margin-top: 30px;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: #fff;
             background-color: #27ae60;
             border: none;
-            border-radius: 5px;
+            border-radius: 25px;
             cursor: pointer;
             transition: background-color 0.3s;
         }
         button:hover {
-            background-color: #2ecc71;
+            background-color: #219150;
+        }
+        .footer {
+            margin-top: 40px;
+            padding: 20px;
+            background: linear-gradient(to bottom, #a8d5ba, #d5e8d4);
         }
     </style>
     <script>
@@ -59,7 +79,7 @@
             document.getElementById('ecoquest-availability').textContent = getRandomAvailability() + "%";
         }
 
-      
+    
         function simulateLiveUpdate() {
             updateAvailability();
             setInterval(updateAvailability, 5000); // Ανανεώνει τιμές κάθε 3 δευτερόλεπτα
@@ -72,23 +92,27 @@
     </script>
 </head>
 <body>
-    <h1>Διαθεσιμότητα Χώρων Πάρκου</h1>
+    <h1>Project Nexus - Διαθεσιμότητα Χώρων</h1>
 
-    <div class="space">
-        <h2>Γήπεδα</h2>
-        <p class="availability" id="fields-availability"></p>
-    </div>
+    <div class="container">
+        <div class="space">
+            <h2>Γήπεδα</h2>
+            <p class="availability" id="fields-availability"></p>
+        </div>
 
-    <div class="space">
-        <h2>Μουσείο</h2>
-        <p class="availability" id="museum-availability"></p>
-    </div>
+        <div class="space">
+            <h2>Μουσείο</h2>
+            <p class="availability" id="museum-availability"></p>
+        </div>
 
-    <div class="space">
-        <h2>Χώρος EcoQuest</h2>
-        <p class="availability" id="ecoquest-availability"></p>
+        <div class="space">
+            <h2>Χώρος EcoQuest</h2>
+            <p class="availability" id="ecoquest-availability"></p>
+        </div>
     </div>
 
     <button onclick="updateAvailability()">Ανανέωση Τιμών</button>
+
+    <div class="footer"></div>
 </body>
 </html>
