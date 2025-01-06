@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Διαθεσιμότητα Χώρων Πάρκου</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+            background-color: #f0f8ff;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 40px;
+        }
+        .space {
+            margin: 20px auto;
+            padding: 15px;
+            border: 2px solid #2ecc71;
+            border-radius: 10px;
+            background-color: #ecf9ec;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .space h2 {
+            margin: 0 0 10px;
+            color: #34495e;
+        }
+        .availability {
+            font-size: 2em;
+            color: #27ae60;
+            font-weight: bold;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: white;
+            background-color: #27ae60;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2ecc71;
+        }
+    </style>
+    <script>
+        function getRandomAvailability() {
+            return Math.floor(Math.random() * 101); // Τυχαία τιμή από 0 έως 100
+        }
+
+        function updateAvailability() {
+            document.getElementById('fields-availability').textContent = getRandomAvailability() + "%";
+            document.getElementById('museum-availability').textContent = getRandomAvailability() + "%";
+            document.getElementById('ecoquest-availability').textContent = getRandomAvailability() + "%";
+        }
+
+      
+        function simulateLiveUpdate() {
+            updateAvailability();
+            setInterval(updateAvailability, 5000); // Ανανεώνει τιμές κάθε 3 δευτερόλεπτα
+        }
+
+        window.onload = () => {
+            simulateLiveUpdate();
+            schedulePopup();
+        };
+    </script>
+</head>
+<body>
+    <h1>Διαθεσιμότητα Χώρων Πάρκου</h1>
+
+    <div class="space">
+        <h2>Γήπεδα</h2>
+        <p class="availability" id="fields-availability"></p>
+    </div>
+
+    <div class="space">
+        <h2>Μουσείο</h2>
+        <p class="availability" id="museum-availability"></p>
+    </div>
+
+    <div class="space">
+        <h2>Χώρος EcoQuest</h2>
+        <p class="availability" id="ecoquest-availability"></p>
+    </div>
+
+    <button onclick="updateAvailability()">Ανανέωση Τιμών</button>
+</body>
+</html>
